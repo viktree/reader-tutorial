@@ -17,7 +17,7 @@ spec =
         describe "printCurrency" $
             it "Creates message using currency configuration from context" $ do
                 result <- newIORef ""
-                let 
+                let
                     config = Config "BTC" True
                     writeString = writeIORef result
                 context <- makeContextWithConfig writeString config

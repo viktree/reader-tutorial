@@ -8,6 +8,6 @@ import Config
 import Control.Monad.Reader
 
 getCurrency :: Reader Config String
-getCurrency = do 
+getCurrency = do
     config <- ask
     pure $ "The currency given to Reader is " <> currency config

@@ -9,4 +9,4 @@ main :: IO ()
 main = do
     config <- Config.load
     print $ runReader C.getCurrency config
-    
+

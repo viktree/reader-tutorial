@@ -9,22 +9,22 @@ import qualified Data.Text as T
 
 price :: MonadIO m => Currency -> m Price
 -- price baseCurrency = undefined
-price baseCurrency = do 
+price baseCurrency = do
      j <- runReq defaultHttpConfig $
          req GET (https "api.coinberry.com" /: "prices" /: "CAD" /: T.pack (show baseCurrency)) NoReqBody jsonResponse mempty
      pure $ responseBody j
 
-data Price = 
+data Price =
     Price { sell :: String
-          , buy :: String 
+          , buy :: String
           } deriving (Show)
 
 instance FromJSON Price where
-    parseJSON = 
+    parseJSON =
         withObject "Price" $ \obj ->
             Price <$> ((obj .: "data") >>= (.: "sell"))
                   <*> ((obj .: "data") >>= (.: "buy"))
 
 
-data Currency = CAD | BTC | ETH | LTC | XRP 
+data Currency = CAD | BTC | ETH | LTC | XRP
     deriving (Show)
