@@ -3,12 +3,14 @@
 ## Quickstart
 
 Ensure that you have installed stack:
-```
+
+```shell
 curl -sSL https://get.haskellstack.org/ | sh
 ```
 
 In the project root run:
-```
+
+```shell
 stack --install-ghc test
 ```
 
@@ -20,8 +22,8 @@ Using functions from the module `CoinberryApi` and the `App` type provided by `T
 
 An example of usage would be:
 
-``` 
-CURRENCY=BTC stack exec price 
+```shell
+CURRENCY=BTC stack exec price
 You can buy BTC for 6761.49
 ```
 
@@ -31,6 +33,6 @@ The program should use all effectful computations from the `Context`, never impo
 
 ## Creating tests
 
-In the test suite we want to mock all effectful computaions from `IO`.
+In the test suite we want to mock all effectful computations from `IO`.
 Namely the HTTP GET requests and the calls to print to the console.
 In order to achieve this model the necessary functions as part of the `Context` in the `App` type and supply the mock functions when running the tests.
